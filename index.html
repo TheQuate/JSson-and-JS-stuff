@@ -3,48 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enkel Login-side</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .login-box {
-            width: 300px;
-            margin: 100px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Login Example</title>
 </head>
 <body>
 
-    <div class="login-box">
-        <h2>Login</h2>
-        <form action="#" method="post">
-            <label for="email">E-postadresse:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <input type="submit" value="Logg inn">
-        </form>
+    <div id="loginBox">
+        <label for="emailInput">E-postadresse:</label>
+        <input type="email" id="emailInput" required>
+        <button onclick="checkEmail()">Sjekk E-post</button>
+        <div id="userInfo" style="display:none;">
+            <p id="name"></p>
+            <img id="image" alt="Profile Image">
+            <label for="passwordInput">Passord:</label>
+            <input type="password" id="passwordInput" required>
+        </div>
     </div>
+
+    <script src="user_data.json"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
