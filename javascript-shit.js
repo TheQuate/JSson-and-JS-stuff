@@ -3,16 +3,13 @@ var userData;
 
 // Henter JSON-data asynkront
 function loadUserData(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.overrideMimeType('application/json');
-    xhr.open('GET', 'user_data.json', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            userData = JSON.parse(xhr.responseText);
+    fetch('json-persobjekt.json')
+        .then(response => response.json())
+        .then(data => {
+            userData = data;
             callback();
-        }
-    };
-    xhr.send();
+        })
+        .catch(error => console.error('Feil ved lasting av JSON: ', error));
 }
 
 // Validerer e-postadresse og viser brukerinformasjon hvis gyldig
@@ -30,7 +27,7 @@ function checkEmail() {
 // Henter brukerinformasjon basert på e-postadresse
 function getUserByEmail(email) {
     return userData.users.find(function(user) {
-        return user.email === email;
+        return user.epost === email;
     });
 }
 
@@ -42,8 +39,8 @@ function showUserInfo(user) {
     var userInfoDiv = document.getElementById('userInfo');
     var loginBoxDiv = document.getElementById('loginBox');
 
-    nameElement.textContent = 'Navn: ' + user.name;
-    imageElement.src = user.image;
+    nameElement.textContent = 'Navn: ' + user.navn;
+    imageElement.src = user.bilde;
     passwordInput.value = '';  // Resetter passordfeltet
 
     // Skjuler innholdsdiven for innlogging og viser brukerinformasjon

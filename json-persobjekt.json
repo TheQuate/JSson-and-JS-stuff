@@ -4,5 +4,16 @@
         "navn": "Joakim Sandum Thrane",
         "passord": "Qwerty123",
         "bilde": "https://www.veggbilder.no/wp-content/uploads/BB1111-preview-600x429.jpg"
+    },
+    {   "epost": "awsomealwin@gmail.com",
+        "navn": "Kitenga Awsome Alwin",
+        "passord": "voff",
+        "bilde": "https://lellogarden.com/____impro/1/onewebmedia/i282037939708665429.jpg?etag=%221b68c-5db44839af051%22&sourceContentType="
+    },
+    {   
+        "epost": "olanormann@gmail.no",
+        "navn": "Ola Normann",
+        "passord": "Qwerty123",
+        "bilde": "https://media.snl.no/media/8374/standard_norges_flagg.png"
     }
 ]
