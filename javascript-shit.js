@@ -1,13 +1,30 @@
 // Brukerdata hentet fra JSON-filen
 var userData;
 
+// Vent til dokumentet er ferdig lastet inn
+document.addEventListener("DOMContentLoaded", function() {
+    // Kjør koden her
+    loadUserData(function() {
+        console.log('User data loaded successfully.');
+    });
+
+    // Resten av koden...
+});
+
+
 // Henter JSON-data asynkront
 function loadUserData(callback) {
     fetch('json-persobjekt.json')
         .then(response => response.json())
         .then(data => {
-            userData = data;
-            callback();
+            // Sjekker om data er en liste av brukere
+            if (Array.isArray(data) && data.length > 0 && data[0].hasOwnProperty('epost')) {
+                userData = { users: data };
+                console.log(userData);
+                callback();
+            } else {
+                console.error('Ugyldig JSON-struktur. Mangler nødvendige felt.');
+            }
         })
         .catch(error => console.error('Feil ved lasting av JSON: ', error));
 }
@@ -46,6 +63,11 @@ function showUserInfo(user) {
     // Skjuler innholdsdiven for innlogging og viser brukerinformasjon
     loginBoxDiv.style.display = 'none';
     userInfoDiv.style.display = 'block';
+
+   // Legg til ekstra informasjon på HTML-siden
+   var userInfoContainer = document.getElementById('userInfoContainer');
+   userInfoContainer.innerHTML = '<p>E-post: ' + user.epost + '</p>';
+   // Legg til andre felt du ønsker å vise
 }
 
 // Kjører funksjonen for å laste inn brukerdata
