@@ -65,9 +65,14 @@ function showUserInfo(user) {
     userInfoDiv.style.display = 'block';
 
    // Legg til ekstra informasjon på HTML-siden
-   var userInfoContainer = document.getElementById('userInfoContainer');
-   userInfoContainer.innerHTML = '<p>E-post: ' + user.epost + '</p>';
-   // Legg til andre felt du ønsker å vise
+    var userInfoContainer = document.getElementById('userInfoContainer');
+    if (userInfoContainer) {
+        userInfoContainer.innerHTML = 'E-post: ' + user.epost;
+        // Legg til andre felt du ønsker å vise
+    } else {
+        console.error('Kunne ikke finne userInfoContainer i HTML.');
+    }
+
 }
 
 // Kjører funksjonen for å laste inn brukerdata
